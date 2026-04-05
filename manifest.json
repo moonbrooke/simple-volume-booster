@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "Simple Volume Booster",
+    "version": "1.0.0",
+    "description": "Simply boost your browser audio!",
+    "permissions": ["activeTab", "scripting"],
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
