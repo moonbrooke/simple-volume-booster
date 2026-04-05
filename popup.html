@@ -154,6 +154,33 @@
             color: var(--accent);
             margin-top: 4px;
         }
+
+        .comp-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--subtext);
+            margin-bottom: -8px;
+        }
+
+        .reset-btn {
+            background: var(--surface1);
+            color: var(--text);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 12px;
+            transition: background 0.2s ease;
+        }
+
+        .reset-btn:hover {
+            background: var(--surface0);
+            color: var(--accent);
+        }
     </style>
 </head>
 
@@ -175,10 +202,42 @@
 
     <div class="control-group slider-container">
         <div class="row">
-            <span class="label">Boost Level</span>
+            <span class="label">Boost</span>
         </div>
-        <input type="range" id="slider" min="1" max="5" step="0.1">
+        <input type="range" id="slider" min="1" max="5" step="0.1" value="1">
         <div class="value-display" id="value">100%</div>
+    </div>
+
+    <div class="control-group slider-container">
+        <div class="row">
+            <span class="label">Compressor</span>
+        </div>
+
+        <div class="comp-label">
+            <span>Threshold</span>
+            <span><span id="threshold-val">0</span> dB</span>
+        </div>
+        <input type="range" id="threshold" min="-50" max="0" step="1" value="0">
+
+        <div class="comp-label">
+            <span>Ratio</span>
+            <span><span id="ratio-val">4</span>:1</span>
+        </div>
+        <input type="range" id="ratio" min="1" max="20" step="0.1" value="4">
+
+        <div class="comp-label">
+            <span>Attack</span>
+            <span><span id="attack-val">20</span> ms</span>
+        </div>
+        <input type="range" id="attack" min="0" max="0.500" step="0.001" value="0.020">
+
+        <div class="comp-label">
+            <span>Release</span>
+            <span><span id="release-val">200</span> ms</span>
+        </div>
+        <input type="range" id="release" min="0" max="0.500" step="0.01" value="0.20">
+
+        <button id="reset-comp" class="reset-btn">Reset Compressor</button>
     </div>
 
     <script src="popup.js"></script>
