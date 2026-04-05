@@ -21,6 +21,7 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
             padding: 20px;
             box-sizing: border-box;
+            overflow: hidden;
         }
 
         .header {
@@ -47,6 +48,11 @@
             border-radius: 12px;
             margin-bottom: 16px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .control-group:last-child {
+            margin-bottom: 0;
+            /* Scrollbar fix kept */
         }
 
         .row {
@@ -163,23 +169,22 @@
             margin-bottom: -8px;
         }
 
-        .reset-btn {
-            background: var(--surface1);
-            color: var(--text);
+        .icon-btn {
+            background: transparent;
+            color: var(--subtext);
             border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
+            padding: 4px;
             cursor: pointer;
-            width: 100%;
-            font-size: 13px;
-            font-weight: 600;
-            margin-top: 12px;
-            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: color 0.2s ease, background 0.2s ease;
         }
 
-        .reset-btn:hover {
-            background: var(--surface0);
+        .icon-btn:hover {
             color: var(--accent);
+            background: var(--surface1);
         }
     </style>
 </head>
@@ -211,6 +216,13 @@
     <div class="control-group slider-container">
         <div class="row">
             <span class="label">Compressor</span>
+            <button id="reset-comp" class="icon-btn" title="Reset Compressor">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                </svg>
+            </button>
         </div>
 
         <div class="comp-label">
@@ -236,8 +248,6 @@
             <span><span id="release-val">200</span> ms</span>
         </div>
         <input type="range" id="release" min="0" max="0.500" step="0.01" value="0.20">
-
-        <button id="reset-comp" class="reset-btn">Reset Compressor</button>
     </div>
 
     <script src="popup.js"></script>
