@@ -7,10 +7,10 @@ if (!window.__volumeBooster) {
         gain: 1,
         
         // Defaults
-        threshold: 0,
-        ratio: 4,
-        attack: 0.020,
-        release: 0.20,
+        threshold: 0, // 0db
+        ratio: 10, // 10:1
+        attack: 0.020, // 20ms
+        release: 0.20, // 200ms
 
         init() {
             if (this.ctx) return;
@@ -73,7 +73,7 @@ chrome.runtime.onMessage.addListener((msg, _, sendResponse) => {
     }
     else if (msg.type === "RESET_COMPRESSOR") {
         booster.threshold = 0;
-        booster.ratio = 4;
+        booster.ratio = 10;
         booster.attack = 0.020;
         booster.release = 0.20;
         booster.apply();

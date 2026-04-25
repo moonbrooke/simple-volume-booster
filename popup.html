@@ -52,7 +52,6 @@
 
         .control-group:last-child {
             margin-bottom: 0;
-            /* Scrollbar fix kept */
         }
 
         .row {
@@ -160,32 +159,6 @@
             color: var(--accent);
             margin-top: 4px;
         }
-
-        .comp-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--subtext);
-            margin-bottom: -8px;
-        }
-
-        .icon-btn {
-            background: transparent;
-            color: var(--subtext);
-            border: none;
-            padding: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-            transition: color 0.2s ease, background 0.2s ease;
-        }
-
-        .icon-btn:hover {
-            color: var(--accent);
-            background: var(--surface1);
-        }
     </style>
 </head>
 
@@ -209,45 +182,16 @@
         <div class="row">
             <span class="label">Boost</span>
         </div>
-        <input type="range" id="slider" min="1" max="5" step="0.1" value="1">
+        <input type="range" id="slider" min="1" max="8" step="0.1" value="1">
         <div class="value-display" id="value">100%</div>
     </div>
 
     <div class="control-group slider-container">
         <div class="row">
-            <span class="label">Compressor</span>
-            <button id="reset-comp" class="icon-btn" title="Reset Compressor">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-                    <path d="M3 3v5h5"></path>
-                </svg>
-            </button>
-        </div>
-
-        <div class="comp-label">
-            <span>Threshold</span>
-            <span><span id="threshold-val">0</span> dB</span>
+            <span class="label">Dynamics</span>
         </div>
         <input type="range" id="threshold" min="-50" max="0" step="1" value="0">
-
-        <div class="comp-label">
-            <span>Ratio</span>
-            <span><span id="ratio-val">4</span>:1</span>
-        </div>
-        <input type="range" id="ratio" min="1" max="20" step="0.1" value="4">
-
-        <div class="comp-label">
-            <span>Attack</span>
-            <span><span id="attack-val">20</span> ms</span>
-        </div>
-        <input type="range" id="attack" min="0" max="0.500" step="0.001" value="0.020">
-
-        <div class="comp-label">
-            <span>Release</span>
-            <span><span id="release-val">200</span> ms</span>
-        </div>
-        <input type="range" id="release" min="0" max="0.500" step="0.01" value="0.20">
+        <div class="value-display" id="threshold-val">0 dB</div>
     </div>
 
     <script src="popup.js"></script>
