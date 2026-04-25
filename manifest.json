@@ -5,7 +5,7 @@
     "icons": {
         "128": "icons/icon.png"
     },
-    "description": "Simply boost your browser audio!",
+    "description": "Simply boost and control the dynamics of your browser's audio!",
     "permissions": ["activeTab", "scripting"],
     "action": {
         "default_popup": "popup.html"
