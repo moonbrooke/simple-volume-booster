@@ -5,19 +5,23 @@ const value = document.getElementById("value");
 const thresholdSlider = document.getElementById("threshold");
 const thresholdVal = document.getElementById("threshold-val");
 
+const monoToggle = document.getElementById("mono");
+const panSlider = document.getElementById("pan");
+const panVal = document.getElementById("pan-val");
+
 function updateValueDisplay(gainValue) {
     const percentage = Math.round(gainValue * 100);
     value.textContent = percentage + "%";
 
     let color = "#a6e3a1";
 
-    if (percentage >= 500) {
+    if (percentage >= 600) {
         color = "#f38ba8";
-    } else if (percentage >= 400) {
+    } else if (percentage >= 500) {
         color = "#eba0ac";
-    } else if (percentage >= 300) {
+    } else if (percentage >= 400) {
         color = "#fab387";
-    } else if (percentage >= 200) {
+    } else if (percentage >= 300) {
         color = "#f9e2af";
     }
 
@@ -26,6 +30,18 @@ function updateValueDisplay(gainValue) {
 
 function updateThresholdDisplay(val) {
     thresholdVal.textContent = val + " dB";
+}
+
+// Format the L/R balance percentage
+function updatePanDisplay(val) {
+    const pan = parseFloat(val);
+    if (pan === 0) {
+        panVal.textContent = "Center";
+    } else if (pan < 0) {
+        panVal.textContent = "L " + Math.round(Math.abs(pan) * 100) + "%";
+    } else {
+        panVal.textContent = "R " + Math.round(pan * 100) + "%";
+    }
 }
 
 async function withTab(callback) {
@@ -49,6 +65,15 @@ withTab(tabId => {
         if (state.threshold !== undefined) {
             thresholdSlider.value = state.threshold;
             updateThresholdDisplay(state.threshold);
+        }
+
+        if (state.mono !== undefined) {
+            monoToggle.checked = state.mono;
+        }
+        
+        if (state.pan !== undefined) {
+            panSlider.value = state.pan;
+            updatePanDisplay(state.pan);
         }
     });
 });
@@ -81,6 +106,26 @@ thresholdSlider.oninput = () => {
             type: "COMPRESSOR",
             param: "threshold",
             value: thresholdSlider.value
+        });
+    });
+};
+
+monoToggle.onchange = () => {
+    withTab(tabId => {
+        chrome.tabs.sendMessage(tabId, {
+            type: "MONO",
+            value: monoToggle.checked
+        });
+    });
+};
+
+panSlider.oninput = () => {
+    updatePanDisplay(panSlider.value);
+
+    withTab(tabId => {
+        chrome.tabs.sendMessage(tabId, {
+            type: "PAN",
+            value: panSlider.value
         });
     });
 };

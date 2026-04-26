@@ -14,7 +14,7 @@
         }
 
         body {
-            width: 260px;
+            width: 360px;
             margin: 0;
             background: var(--base);
             color: var(--text);
@@ -44,7 +44,7 @@
 
         .control-group {
             background: var(--surface0);
-            padding: 16px;
+            padding: 14px;
             border-radius: 12px;
             margin-bottom: 16px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -154,7 +154,7 @@
 
         .value-display {
             text-align: center;
-            font-size: 28px;
+            font-size: 20px;
             font-weight: bold;
             color: var(--accent);
             margin-top: 4px;
@@ -192,6 +192,33 @@
         </div>
         <input type="range" id="threshold" min="-50" max="0" step="1" value="0">
         <div class="value-display" id="threshold-val">0 dB</div>
+    </div>
+
+    <div class="control-group slider-container">
+        <div class="row">
+            <span class="label">Balance</span>
+        </div>
+
+        <div
+            style="display: grid; grid-template-columns: 1fr auto; column-gap: 16px; row-gap: 6px; margin-top: 4px; align-items: center;">
+            <div class="row" style="margin-bottom: 0;">
+                <span class="label" style="font-size: 12px; color: var(--subtext);">L</span>
+                <span class="label" style="font-size: 12px; color: var(--subtext);">R</span>
+            </div>
+            <div style="text-align: center;">
+                <span class="label" style="font-size: 12px; color: var(--subtext);">Mono</span>
+            </div>
+
+            <input type="range" id="pan" min="-1" max="1" step="0.05" value="0">
+            <label class="switch" style="margin: 0 auto;">
+                <input type="checkbox" id="mono">
+                <span class="slider-toggle"></span>
+            </label>
+
+            <div class="value-display" id="pan-val" style="font-size: 14px; margin-top: 2px; color: var(--subtext);">
+                Center</div>
+            <div></div>
+        </div>
     </div>
 
     <script src="popup.js"></script>
