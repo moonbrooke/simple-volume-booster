@@ -1,5 +1,7 @@
 # simple-volume-booster
 
+![Screenshot](./images/screenshot.png)
+
 Amplify and control the dynamics of your browser's audio with ease.
 
 - Boost: Crank up quiet tabs by up to 800%.
