@@ -159,6 +159,30 @@
             color: var(--accent);
             margin-top: 4px;
         }
+
+        .btn-mono {
+            background: var(--surface1);
+            color: var(--text);
+            border: 1px solid var(--surface1);
+            border-radius: 6px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-mono:hover {
+            background: var(--surface0);
+            border-color: var(--subtext);
+        }
+
+        .btn-mono.active {
+            background: var(--accent);
+            color: var(--base);
+            box-shadow: 0 0 8px rgba(166, 227, 161, 0.3);
+        }
     </style>
 </head>
 
@@ -197,27 +221,15 @@
     <div class="control-group slider-container">
         <div class="row">
             <span class="label">Balance</span>
+            <button id="mono" class="btn-mono">Mono</button>
         </div>
-
-        <div
-            style="display: grid; grid-template-columns: 1fr auto; column-gap: 16px; row-gap: 6px; margin-top: 4px; align-items: center;">
-            <div class="row" style="margin-bottom: 0;">
+        <div style="margin-top: 4px;">
+            <div class="row" style="margin-bottom: 6px;">
                 <span class="label" style="font-size: 12px; color: var(--subtext);">L</span>
                 <span class="label" style="font-size: 12px; color: var(--subtext);">R</span>
             </div>
-            <div style="text-align: center;">
-                <span class="label" style="font-size: 12px; color: var(--subtext);">Mono</span>
-            </div>
-
             <input type="range" id="pan" min="-1" max="1" step="0.05" value="0">
-            <label class="switch" style="margin: 0 auto;">
-                <input type="checkbox" id="mono">
-                <span class="slider-toggle"></span>
-            </label>
-
-            <div class="value-display" id="pan-val" style="font-size: 14px; margin-top: 2px; color: var(--subtext);">
-                Center</div>
-            <div></div>
+            <div class="value-display" id="pan-val" style="font-size: 14px; margin-top: 8px; color: var(--subtext);">Center</div>
         </div>
     </div>
 

@@ -69,7 +69,7 @@ withTab(tabId => {
         }
 
         if (state.mono !== undefined) {
-            monoToggle.checked = state.mono;
+            monoToggle.classList.toggle("active", state.mono);
         }
 
         if (state.pan !== undefined) {
@@ -110,11 +110,12 @@ thresholdSlider.oninput = () => {
     });
 };
 
-monoToggle.onchange = () => {
+monoToggle.onclick = () => {
+    const isMonoActive = monoToggle.classList.toggle("active");
     withTab(tabId => {
         chrome.tabs.sendMessage(tabId, {
             type: "MONO",
-            value: monoToggle.checked
+            value: isMonoActive
         });
     });
 };
