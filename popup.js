@@ -29,7 +29,7 @@ function updateValueDisplay(gainValue) {
 }
 
 function updateThresholdDisplay(val) {
-    thresholdVal.textContent = val + " dB";
+    thresholdVal.textContent = val + "%";
 }
 
 // Format the L/R balance percentage
@@ -58,19 +58,20 @@ withTab(tabId => {
         if (!state) return;
 
         enable.checked = state.enabled;
-        
+
         slider.value = state.gain;
         updateValueDisplay(state.gain);
 
         if (state.threshold !== undefined) {
-            thresholdSlider.value = state.threshold;
-            updateThresholdDisplay(state.threshold);
+            const percentVal = Math.round(state.threshold * -2);
+            thresholdSlider.value = percentVal;
+            updateThresholdDisplay(percentVal);
         }
 
         if (state.mono !== undefined) {
             monoToggle.checked = state.mono;
         }
-        
+
         if (state.pan !== undefined) {
             panSlider.value = state.pan;
             updatePanDisplay(state.pan);
@@ -100,12 +101,11 @@ slider.oninput = () => {
 
 thresholdSlider.oninput = () => {
     updateThresholdDisplay(thresholdSlider.value);
-
     withTab(tabId => {
         chrome.tabs.sendMessage(tabId, {
             type: "COMPRESSOR",
             param: "threshold",
-            value: thresholdSlider.value
+            value: thresholdSlider.value * -0.5
         });
     });
 };
