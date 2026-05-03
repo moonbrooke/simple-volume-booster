@@ -3,7 +3,7 @@
 ![Screenshot](./images/screenshot.png)
 
 <p align="center">
-    [Privacy Policy](./docs/privacy_policy.md)
+    <a href="https://github.com/moonbrooke/simple-volume-booster/blob/main/docs/privacy_policy.md">Privacy Policy</a>
 </p>
 
 Amplify and control the dynamics of your browser's audio with ease.
