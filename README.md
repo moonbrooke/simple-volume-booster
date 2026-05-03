@@ -2,7 +2,9 @@
 
 ![Screenshot](./images/screenshot.png)
 
-[Privacy Policy](./docs/privacy_policy.md)
+<p align="center">
+    [Privacy Policy](./docs/privacy_policy.md)
+</p>
 
 Amplify and control the dynamics of your browser's audio with ease.
 
