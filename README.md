@@ -2,6 +2,8 @@
 
 ![Screenshot](./images/screenshot.png)
 
+[Privacy Policy](./docs/privacy_policy.md)
+
 Amplify and control the dynamics of your browser's audio with ease.
 
 - Boost: Crank up quiet tabs by up to 800%.
